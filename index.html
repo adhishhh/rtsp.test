@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>stream.bmit </title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #input-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 70%;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>stream.bmit <br> Enter Details</h1>
+    
+    <div id="input-container">
+        <input type="text" id="usernameInput" placeholder="Enter Username">
+        <input type="text" id="rtspInput" placeholder="Enter RTSP URL">
+        <button onclick="redirectToStreamingPage()">Start Live Streaming</button>
+    </div>
+    
+    <script>
+        function redirectToStreamingPage() {
+            const username = document.getElementById("usernameInput").value;
+            const rtspLink = document.getElementById("rtspInput").value;
+            
+            // Encode username and RTSP link as URL parameters
+            const encodedUsername = encodeURIComponent(username);
+            const encodedRtspLink = encodeURIComponent(rtspLink);
+            
+            // Redirect to the streaming page with parameters
+            window.location.href = `streaming.html?username=${encodedUsername}&rtsp=${encodedRtspLink}`;
+        }
+    </script>
+</body>
+</html>
