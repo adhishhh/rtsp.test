@@ -12,20 +12,36 @@
             padding: 0;
         }
         
+        #header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+        
+        #username {
+            margin-right: 20px;
+        }
+        
         #stream-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: calc(100vh - 50px);
         }
         
         video {
+            width: 8.5in; /* Set to around 8-9 inches */
+            height: auto;
             max-width: 100%;
             max-height: 100%;
         }
     </style>
 </head>
 <body>
+    <div id="header">
+        <div id="username"></div>
+    </div>
+    
     <h1>stream.bmit - Live Streaming</h1>
     
     <div id="stream-container">
@@ -40,6 +56,9 @@
         const urlParams = new URLSearchParams(queryString);
         const username = decodeURIComponent(urlParams.get("username"));
         const rtspLink = decodeURIComponent(urlParams.get("rtsp"));
+        
+        // Update username in the header
+        document.getElementById("username").textContent = `Username: ${username}`;
         
         // Update video source with the provided RTSP link
         const videoElement = document.querySelector("video");
