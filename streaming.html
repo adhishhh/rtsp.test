@@ -30,7 +30,7 @@
         }
         
         video {
-            width: 11.5in; 
+            width: 15.5in; 
             height: auto;
             max-width: 100%;
             max-height: 100%;
@@ -57,15 +57,13 @@
         const username = decodeURIComponent(urlParams.get("username"));
         const rtspLink = decodeURIComponent(urlParams.get("rtsp"));
         
-        // Update username in the header
         document.getElementById("username").textContent = `Username: ${username}`;
-        
-        // Update video source with the provided RTSP link
+
         const videoElement = document.querySelector("video");
         const sourceElement = document.createElement("source");
         sourceElement.src = rtspLink;
         sourceElement.type = "application/x-rtsp";
-        videoElement.innerHTML = ""; // Clear previous sources
+        videoElement.innerHTML = ""; 
         videoElement.appendChild(sourceElement);
         videoElement.load();
     </script>
