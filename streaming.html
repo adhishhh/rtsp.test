@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+
 <html>
+    
 <head>
     <title>stream.BMIT - Live Streaming</title>
+
     <link rel="stylesheet" type="text/css" href="style2.css">
     <style>
-        body {
+        body 
+        {
             color: #000;
             background-color: #fff;
             font-family: Arial, sans-serif;
@@ -13,14 +17,16 @@
             padding: 0;
         }
         
-        #stream-container {
+        #stream-container 
+        {
             display: flex;
             justify-content: center;
             align-items: center;
             height: calc(100vh - 50px);
         }
         
-        video {
+        video 
+        {
             width: 1500px;
             max-width: 100%;
             height: auto;
@@ -28,22 +34,29 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
         }
         
-        h1 {
+        h1 
+        {
             font-size: 24px;
             margin-top: 20px;
             font-weight: bold;
         }
+        
     </style>
+
 </head>
+
 <body>
+   
     <div class="header">
         <h1>stream.BMIT</h1>
+        
         <p>Experience Live Streaming</p>
     </div>
     
     <div id="stream-container">
         <video controls autoplay>
             <source src="" type="application/x-rtsp">
+            
             Your browser does not support the RTSP video stream.
         </video>
     </div>
@@ -53,15 +66,16 @@
         const urlParams = new URLSearchParams(queryString);
         const username = decodeURIComponent(urlParams.get("username"));
         const rtspLink = decodeURIComponent(urlParams.get("rtsp"));
-        
-        // Update video source with the provided RTSP link
         const videoElement = document.querySelector("video");
         const sourceElement = document.createElement("source");
+        
         sourceElement.src = rtspLink;
         sourceElement.type = "application/x-rtsp";
+        
         videoElement.innerHTML = ""; 
         videoElement.appendChild(sourceElement);
         videoElement.load();
     </script>
+
 </body>
 </html>
