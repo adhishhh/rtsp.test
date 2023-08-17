@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>stream.bmit - Live Streaming</title>
+    <title>stream.BMIT - Live Streaming</title>
     <style>
         body {
-            background-color: #000;
-            color: #fff;
+            color: #000;
+            background-color: #fff;
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-        }
-        
-        #header {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
-        }
-        
-        #username {
-            margin-right: 20px;
         }
         
         #stream-container {
@@ -30,19 +20,25 @@
         }
         
         video {
-            width: 15.5in; 
-            height: auto;
+            width: 600px;
             max-width: 100%;
-            max-height: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div id="header">
-        <div id="username"></div>
+    <div class="header">
+        <h1>stream.BMIT</h1>
+        <p>Experience Live Streaming</p>
     </div>
-    
-    <h1>stream.bmit - Live Streaming</h1>
     
     <div id="stream-container">
         <video controls autoplay>
@@ -57,8 +53,7 @@
         const username = decodeURIComponent(urlParams.get("username"));
         const rtspLink = decodeURIComponent(urlParams.get("rtsp"));
         
-        document.getElementById("username").textContent = `Username: ${username}`;
-
+        // Update video source with the provided RTSP link
         const videoElement = document.querySelector("video");
         const sourceElement = document.createElement("source");
         sourceElement.src = rtspLink;
