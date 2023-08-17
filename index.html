@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html>
+    
 <head>
     <title>stream.BMIT - Live Stream</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+    
 <body>
     <div class="header">
         <h1>stream.BMIT</h1>
+        
         <p>Experience Live Streaming</p>
     </div>
     
     <div id="input-container">
         <input type="text" id="usernameInput" placeholder="Your Username">
         <input type="text" id="rtspInput" placeholder="RTSP Stream URL">
+        
         <button onclick="redirectToStreamingPage()">Start Streaming</button>
+        
+        <p id="errorMessage" class="error-message"></p>
     </div>
     
     <script>
-        function redirectToStreamingPage() {
+        function redirectToStreamingPage()
+        {
             const username = document.getElementById("usernameInput").value;
             const rtspLink = document.getElementById("rtspInput").value;
             
-            const encodedUsername = encodeURIComponent(username);
-            const encodedRtspLink = encodeURIComponent(rtspLink);
-            
-            window.location.href = `streaming.html?username=${encodedUsername}&rtsp=${encodedRtspLink}`;
+            if (username && rtspLink) 
+            {
+                const encodedUsername = encodeURIComponent(username);
+                const encodedRtspLink = encodeURIComponent(rtspLink);
+                
+                window.location.href = `streaming.html?username=${encodedUsername}&rtsp=${encodedRtspLink}`;
+            } 
+            else 
+            {
+                document.getElementById("errorMessage").textContent = "Please enter both username and RTSP link.";
+            }
         }
     </script>
+    
 </body>
+    
 </html>
